@@ -1,0 +1,14 @@
+---
+- name: Secure Web Server Update
+  # We use a variable here so we can control it via a Survey later
+  hosts: "{{ target_group }}"
+  gather_facts: false
+  
+  tasks:
+    - name: Simulate Load Balancer Configuration
+      debug:
+        msg: "Securely connecting to {{ inventory_hostname }} using encrypted credentials."
+
+    - name: Perform Critical Update
+      debug:
+        msg: "Updating configuration on {{ inventory_hostname }}..."
