@@ -26,6 +26,12 @@
         state: started
         enabled: true
 
-    - name: Perform Critical Update Simulation
-      debug:
-        msg: "Finalizing configuration on {{ inventory_hostname }}..."
+    - name: Verify Nginx is responding locally
+      ansible.builtin.uri:
+        url: http://localhost
+        return_content: true
+      register: web_output
+      
+    - name: Display the webserver response
+      ansible.builtin.debug:
+        msg: "The server responded with: {{ web_output.content }}"
