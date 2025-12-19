@@ -1,0 +1,31 @@
+---
+- name: Secure Web Server Update and Nginx Setup
+  hosts: "{{ target_group }}"
+  become: true  # Required to install packages and manage services
+  gather_facts: true # Set to true to allow Ansible to detect the OS (Amazon Linux vs Ubuntu)
+
+  tasks:
+    - name: Simulate Load Balancer Configuration
+      debug:
+        msg: "Securely connecting to {{ inventory_hostname }} using encrypted credentials."
+
+    - name: Install Nginx
+      ansible.builtin.package:
+        name: nginx
+        state: present
+
+    - name: Create a basic HTML landing page
+      ansible.builtin.copy:
+        content: "<h1>Welcome to the Demo Webserver on {{ inventory_hostname }}</h1>"
+        dest: /var/www/html/index.html
+        mode: '0644'
+
+    - name: Ensure Nginx is started and enabled
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+
+    - name: Perform Critical Update Simulation
+      debug:
+        msg: "Finalizing configuration on {{ inventory_hostname }}..."
