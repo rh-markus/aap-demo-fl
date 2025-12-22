@@ -2,7 +2,7 @@
 - name: Secure Web Server Update and Nginx Setup
   hosts: "{{ target_group }}"
   become: true  # Required to install packages and manage services
-  gather_facts: flase # Set to true to allow Ansible to detect the OS (Amazon Linux vs Ubuntu)
+  gather_facts: false # Set to true to allow Ansible to detect the OS (Amazon Linux vs Ubuntu)
 
   tasks:
     - name: Simulate Load Balancer Configuration
