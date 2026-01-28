@@ -2,7 +2,7 @@
 - name: Secure Web Server Update and Nginx Setup
   hosts: "{{ target_group }}"
   become: true  # Required to install packages and manage services
-  gather_facts: true
+  gather_facts: false
 
   tasks:
     - name: Simulate Load Balancer Configuration
