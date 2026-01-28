@@ -3,6 +3,7 @@
   hosts: "{{ target_group }}"
   become: true  # Required to install packages and manage services
   gather_facts: true
+  remote_user: ec2-user
 
   tasks:
     - name: Simulate Load Balancer Configuration
